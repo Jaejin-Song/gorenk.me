@@ -1,0 +1,60 @@
+.division{
+    width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.division ins{
+    margin: 20px auto 10px auto;
+}
+
+.division .title{
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid black;
+    font-size: 18px;
+    padding: 24px 0px;
+}
+
+.division .title .title_rank{
+    width: 300px;
+    text-align: center;
+    border-right: 1px solid black;
+}
+
+.division .title .title_price{
+    width: 700px;
+    text-align: center;
+}
+
+.division .division_box{
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid black;
+    padding: 12px 0px;
+}
+
+.division .division_box .division_img{
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.division .division_box .division_name{
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    border-right: 1px solid black;
+    font-size: 20px;
+}
+
+.division .division_box .division_sub{
+    width: 700px;
+    display: flex;
+    align-items: center;
+    padding-left: 165px;
+}

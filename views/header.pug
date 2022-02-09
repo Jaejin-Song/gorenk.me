@@ -1,0 +1,28 @@
+header
+    .menu-top
+        .menu
+            a(href="/")
+                img.logo(src="img/gorank.png", alt="gorank.me")
+        .middle
+            a.link(href="http://fifaonline4.nexon.com/main/index", target="_blank")
+                span FIFA ONLINE 4
+            a.link(href="http://fifaonline4.inven.co.kr/", target="_blank")
+                span 피파4 인벤
+        if user && user.id
+            .user
+                ._login
+                    a.user-name(href='#')= user.nickname + '님'
+                .logout
+                    a#logout(href='/auth/logout') 로그아웃
+        else
+            .login
+                a#login(href="/login") 로그인
+        
+    nav
+        ul
+            li(style="margin-left: 20px")
+                a(href="/") 구단주조회
+            li
+                a(href="/division") 공식 경기 등급
+            li
+                a(href="/community") 커뮤니티

@@ -1,0 +1,102 @@
+extends layout
+
+block scripts
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap", rel="stylesheet")
+    link(rel="stylesheet", href="style_match.css")
+
+block content
+    .result-container
+        .detail_box
+            .director
+                .profile-box
+                    .profile
+                        .profile-img
+                            img.rank(src= crawl_owner_match.profile_rank, alt)
+                            img.mark(src= crawl_owner_match.profile_mark, alt)
+                        .profile-info
+                            span.name= mynickname
+                            p Lv.
+                                span.level= mylevel
+                    .season_box
+                        .season_title
+                            span 현재 시즌 (현재 / 시즌 최고 등급 / 전적 / 승률)
+                        .season_content
+                            img.mark(src= crawl_stat1.season_now_now)
+                            img.mark(src= crawl_stat1.season_now_best)
+                            span.win= crawl_stat1.season_now_win
+                    .value_box
+                        .value_title
+                            span 구단가치
+                        .value
+                            span= crawl_owner_match.team_value
+                .profile-box
+                    .profile
+                        .profile-img
+                            img.rank(src= crawl_opponent.profile_rank, alt)
+                            img.mark(src= crawl_opponent.profile_mark, alt)
+                        .profile-info
+                            span.name= opponent_nickname
+                            p Lv.
+                                span.level= opponent_level
+                    .season_box
+                        .season_title
+                            span 현재 시즌 (현재 / 시즌 최고 등급 / 전적 / 승률)
+                        .season_content
+                            img.mark(src= opponent_stat.season_now_now)
+                            img.mark(src= opponent_stat.season_now_best)
+                            span.win= opponent_stat.season_now_win
+                    .value_box
+                        .value_title
+                            span 구단가치
+                        .value
+                            span= crawl_opponent.team_value
+            ins(class="kakao_ad_area", style="display:none;", data-ad-unit= "DAN-ubrh7i5pnbcm", data-ad-width   = "728", data-ad-height  = "90")
+            .stat_title
+                span 경기 기록
+            .stat
+                .stat_box
+                    .side= goal1
+                    .center 득점
+                    .side= goal2
+                .stat_box
+                    .side= possession1
+                    .center 점유율
+                    .side= possession2
+                .stat_box
+                    .side= pass_rate1
+                    .center 패스 성공률
+                    .side= pass_rate2
+                .stat_box
+                    .side= shoot1
+                    .center 슈팅
+                    .side= shoot2
+                .stat_box
+                    .side= effective1
+                    .center 유효슛
+                    .side= effective2
+                .stat_box
+                    .side= corner1
+                    .center 코너킥
+                    .side= corner2
+                .stat_box
+                    .side= freekick1
+                    .center 프리킥
+                    .side= freekick2
+                .stat_box
+                    .side= penalty1
+                    .center 페널티킥
+                    .side= penalty2
+                .stat_box
+                    .side= foul1
+                    .center 파울
+                    .side= foul2
+                .stat_box
+                    .side= yellow1
+                    .center 경고
+                    .side= yellow2
+                .stat_box
+                    .side= red1
+                    .center 퇴장
+                    .side= red2
+                
+            .player

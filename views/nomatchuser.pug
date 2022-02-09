@@ -1,0 +1,52 @@
+extends layout
+
+block content
+    .result-container
+        .profile
+            #profile-img
+                img.rank(src= crawl_owner.profile_rank, alt)
+                img.mark(src= crawl_owner.profile_mark, alt)
+            #profile-info
+                span#name= username
+                p Lv.
+                    span#level= userlevel
+        .team_info
+            .date_from
+                .title 구단 창립일
+                .date= crawl_owner.date_from
+            .team_have_title
+                span 보유 구단
+            .team_have
+                .team_national
+                    span.team_kind 대표팀 :
+                    img.team_mark(src= crawl_owner.mark_national)
+                    span.team_name= crawl_owner.name_national
+                .team_club
+                    span.team_kind 클럽팀 :
+                    img.team_mark(src= crawl_owner.mark_club)
+                    span.team_name= crawl_owner.name_club
+        .match
+            .match_title 
+                span 공식 경기 1 ON 1
+            .match_stat
+                .season_box
+                    .season_title
+                        span 현재 시즌 (현재 / 시즌 최고 등급 / 전적 / 승률)
+                    .season_content
+                        img.mark(src= crawl_stat.season_now_now)
+                        img.mark(src= crawl_stat.season_now_best)
+                        span.win= crawl_stat.season_now_win
+                .season_box.middle
+                    .season_title
+                        span 지난 시즌 (최종 / 시즌 최고 등급 / 전적 / 승률)
+                    .season_content
+                        img.mark(src= crawl_stat.season_past_final)
+                        img.mark(src= crawl_stat.season_past_best)
+                        span.win= crawl_stat.season_past_win
+                .best_box
+                    .season_title
+                        span 역대 최고 등급
+                    .season_content
+                        img.mark(src= crawl_stat.season_best)
+                        span.win= crawl_stat.season_best_date 
+        

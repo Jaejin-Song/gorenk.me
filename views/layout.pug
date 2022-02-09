@@ -1,0 +1,46 @@
+doctype html
+html(lang="ko")
+
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title 피파 전적 검색 GORANK.ME
+        link(rel="stylesheet", href="style.css")
+        
+   
+
+        script(src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous")
+        
+        //- fontawesome
+        link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        //- font
+        link(href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet")
+        script(type="text/javascript", src="//t1.daumcdn.net/kas/static/ba.min.js", async)
+        //- naver
+        meta(name="naver-site-verification", content="a3fe725d33bf0241c94ee646a319b6c68fe8a003")
+        link(rel="canonical", href="http://www.mysite.com/article/article1.html")
+        meta(name="description", content="피파 전적 검색 및 경기 결과 기록, 구단 선수 조회")
+
+        meta(property="og:type", content="website")
+        meta(property="og:title", content="GORANK.ME")
+        meta(property="og:description", content="피파 전적 검색 및 경기 결과 기록, 구단 선수 조회")
+        meta(property="og:image", content="img/gorank-main.png")
+        meta(property="og:url", content="http://gorank.me")
+        //-adsense
+        script(data-ad-client="ca-pub-9131970902262340", async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")
+        
+        //- Global site tag (gtag.js) - Google Analytics
+        script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-74385679-4')
+        script.
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-74385679-4');
+        block scripts
+
+
+    body
+        include header
+        block content
+        include footer
+            

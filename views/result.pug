@@ -1,0 +1,584 @@
+extends layout
+
+block scripts
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap", rel="stylesheet")
+    script(src="/javascript/load_match.js")
+    script(src="/javascript/get_more.js")
+
+block content
+    .result-container
+        .profile
+            #profile-img
+                img.rank(src= crawl_owner.profile_rank, alt)
+                img.mark(src= crawl_owner.profile_mark, alt)
+            #profile-info
+                span#name= username
+                p Lv.
+                    span#level= userlevel
+        ins.ins1(class="kakao_ad_area", style="display:none;", data-ad-unit="DAN-1hrm04j252hya", data-ad-width= "728", data-ad-height= "90")
+        .team_info
+            .date_from
+                .title 구단 창립일
+                .date= crawl_owner.date_from
+            .team_have_title
+                span 보유 구단
+            .team_have
+                .team_national
+                    span.team_kind 대표팀 :
+                    img.team_mark(src= crawl_owner.mark_national)
+                    span.team_name= crawl_owner.name_national
+                .team_club
+                    span.team_kind 클럽팀 :
+                    img.team_mark(src= crawl_owner.mark_club)
+                    span.team_name= crawl_owner.name_club
+        .match
+            .match_title 
+                span 공식 경기 1 ON 1
+            .match_stat
+                .season_box
+                    .season_title
+                        span 현재 시즌 (현재 / 시즌 최고 등급 / 전적 / 승률)
+                    .season_content
+                        img.mark(src= crawl_stat.season_now_now)
+                        img.mark(src= crawl_stat.season_now_best)
+                        span.win= crawl_stat.season_now_win
+                .season_box.middle
+                    .season_title
+                        span 지난 시즌 (최종 / 시즌 최고 등급 / 전적 / 승률)
+                    .season_content
+                        img.mark(src= crawl_stat.season_past_final)
+                        img.mark(src= crawl_stat.season_past_best)
+                        span.win= crawl_stat.season_past_win
+                .best_box
+                    .season_title
+                        span 역대 최고 등급
+                    .season_content
+                        img.mark(src= crawl_stat.season_best)
+                        span.win= crawl_stat.season_best_date 
+            .match_analysis
+                .analysis_title
+                    span.main 최근 25경기 평균 기록
+                    span.careful ※ 몰수승,패 경기는 기록에서 제외됩니다.
+                .analysis_content
+                    .stat
+                        .an4
+                            span 승률 
+                            span._win_rate
+                        .an4
+                            span 득점 
+                            span.mygoal
+                        .an4
+                            span 실점 
+                            span.yourgoal 
+                    .stat
+                        .an4
+                            span 점유율
+                            span._possession
+                        .an4
+                            span 패스 성공률
+                            span._pass
+                        .an4
+                            span 드리블 거리(야드)
+                            span._dribble
+                    .stat
+                        .an4
+                            span 슈팅 시도 횟수
+                            span._shoot
+                        .an4
+                            span 유효슈팅 횟수
+                            span._effective
+                        .an4
+                            span 슈팅 성공률
+                            span._shoot_success
+                    .stat
+                        .an4
+                            span 코너킥 
+                            span._corner
+                        .an4
+                            span 프리킥 성공률
+                            span._freekick
+                        .an4
+                            span 페널티킥 성공률
+                            span._penalty
+                    .stat_last
+                        .an4
+                            span 파울 
+                            span._foul
+                        .an4
+                            span 차단 성공률
+                            span._block
+                        .an4
+                            span 태클 성공률
+                            span._tackle
+            .match_box
+                .match_info
+                    span.date 날짜
+                    span.myname 내 팀
+                    span.score 스코어
+                    span.opponent 상대 팀
+                    span.match_result 경기 결과
+                ._match_list
+                .more_match
+                    .more_match_box
+        .squad
+            .squad_profile
+                .team_value
+                    .title 구단 가치
+                    .value= crawl_owner.team_value
+                ins(class="kakao_ad_area", style="display:none;", data-ad-unit="DAN-urdzxxq3263l", data-ad-width= "300", data-ad-height= "250")
+            #squad_loster
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[0].season_img)
+                            span.player_name= leading_list[0].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[0].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[0].spPosition}        
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[1].season_img)
+                            span.player_name= leading_list[1].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[1].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[1].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[2].season_img)
+                            span.player_name= leading_list[2].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[2].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[2].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[3].season_img)
+                            span.player_name= leading_list[3].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[3].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[3].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[4].season_img)
+                            span.player_name= leading_list[4].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[4].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[4].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[5].season_img)
+                            span.player_name= leading_list[5].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[5].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[5].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[6].season_img)
+                            span.player_name= leading_list[6].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[6].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[6].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[7].season_img)
+                            span.player_name= leading_list[7].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[7].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[7].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[8].season_img)
+                            span.player_name= leading_list[8].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[8].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[8].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[9].season_img)
+                            span.player_name= leading_list[9].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[9].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[9].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= leading_list[10].season_img)
+                            span.player_name= leading_list[10].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{leading_list[10].spGrade}
+                    .player_position
+                        span.player_position #{leading_list[10].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= bench_list[0].season_img)
+                            span.player_name= bench_list[0].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{bench_list[0].spGrade}
+                    .player_position
+                        span.player_position #{bench_list[0].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= bench_list[1].season_img)
+                            span.player_name= bench_list[1].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{bench_list[1].spGrade}
+                    .player_position
+                        span.player_position #{bench_list[1].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= bench_list[2].season_img)
+                            span.player_name= bench_list[2].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{bench_list[2].spGrade}
+                    .player_position
+                        span.player_position #{bench_list[2].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= bench_list[3].season_img)
+                            span.player_name= bench_list[3].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{bench_list[3].spGrade}
+                    .player_position
+                        span.player_position #{bench_list[3].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= bench_list[4].season_img)
+                            span.player_name= bench_list[4].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{bench_list[4].spGrade}
+                    .player_position
+                        span.player_position #{bench_list[4].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= bench_list[5].season_img)
+                            span.player_name= bench_list[5].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{bench_list[5].spGrade}
+                    .player_position
+                        span.player_position #{bench_list[5].spPosition}
+                .player
+                    .player_img
+                    .player_info
+                        .up
+                            span.player_season
+                                img(src= bench_list[6].season_img)
+                            span.player_name= bench_list[6].name
+                        .down
+                            span.plus 강화
+                            span.player_grade #{bench_list[6].spGrade}
+                    .player_position
+                        span.player_position #{bench_list[6].spPosition}
+
+    script.
+        //경기 기록
+        //- if문으로 이미지 없을 경우에 not_found 이미지로 업로드
+        var player_img = document.getElementsByClassName("player_img");
+
+        var _leading_list = !{_leading_list};
+        for(var a=0; a<_leading_list.length; a++){
+
+            var new_leading = document.createElement('img');
+            new_leading.className = "img_source";
+
+            new_leading.src = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p" + _leading_list[a].pid + ".png";
+            new_leading.alt = "";
+            player_img[a].appendChild(new_leading);
+        }
+        var _bench_list = !{_bench_list};
+        for(var b=0; b<_bench_list.length; b++){
+            var new_bench = document.createElement('img');
+            new_bench.className = "img_source";
+
+            new_bench.src = "https://fo4.dn.nexoncdn.co.kr/live/externalAssets/common/players/p" + _bench_list[b].pid + ".png";
+            new_bench.alt = "";
+            player_img[b+11].appendChild(new_bench);
+        }
+
+        var match_list= !{match_list};
+        var loc = document.getElementsByClassName("_match_list")[0];
+
+        var match_count=0;
+        var win=0;
+        var goal=0;
+        var _goal=0;
+        var corner=0;
+        var dribble=0;
+        var foul=0;
+        var possession=0;
+
+        var block=0;
+        var block_try=0;
+        var tackle=0;
+        var tackle_try=0;
+
+        var pass=0;
+        var pass_try=0;
+
+        var effective_shoot=0;
+        var shoot=0;
+        var shoot_freekick=0;
+        var goal_freekick=0;
+        var shoot_penalty=0;
+        var goal_penalty=0;
+
+        for(var j=0; j<match_list.length; j++){
+            if(match_list[j].result == 'success'){
+                match_count++;
+                if(match_list[j].matchinfo1.matchDetail.matchResult=="승") win++;
+                goal += match_list[j].matchinfo1.shoot.goalTotal;
+                try{
+                    _goal += match_list[j].matchinfo2.shoot.goalTotal;
+                } catch(err){
+                    _goal += 0;
+                }
+                
+                shoot += match_list[j].matchinfo1.shoot.shootTotal;
+                corner = match_list[j].matchinfo1.matchDetail.cornerKick;
+                dribble += match_list[j].matchinfo1.matchDetail.dribble;
+                foul += match_list[j].matchinfo1.matchDetail.foul;
+                possession += match_list[j].matchinfo1.matchDetail.possession;
+
+                block += match_list[j].matchinfo1.defence.blockSuccess;
+                block_try += match_list[j].matchinfo1.defence.blockTry;
+                tackle += match_list[j].matchinfo1.defence.tackleSuccess;
+                tackle_try += match_list[j].matchinfo1.defence.tackleTry;
+
+                pass += match_list[j].matchinfo1.pass.passSuccess;
+                pass_try += match_list[j].matchinfo1.pass.passTry;
+
+                effective_shoot += match_list[j].matchinfo1.shoot.effectiveShootTotal;
+                shoot_freekick += match_list[j].matchinfo1.shoot.shootFreekick;
+                goal_freekick += match_list[j].matchinfo1.shoot.goalFreekick;
+                shoot_penalty += match_list[j].matchinfo1.shoot.shootPenaltyKick;
+                goal_penalty += match_list[j].matchinfo1.shoot.goalPenaltyKick;
+            }
+        }
+        win = ((win/match_count) * 100).toFixed(1) + "% (" + win + "/" + match_count + ")";
+        get_win = document.getElementsByClassName('_win_rate')[0];
+        text_win = document.createTextNode(win);
+        get_win.appendChild(text_win);
+
+        goal /= match_count;
+        goal = goal.toFixed(1);
+        get_goal = document.getElementsByClassName('mygoal')[0];
+        text_mygoal = document.createTextNode(goal);
+        get_goal.appendChild(text_mygoal);
+
+        _goal /= match_count;
+        _goal = _goal.toFixed(1);
+        get_yourgoal = document.getElementsByClassName('yourgoal')[0];
+        text_yourgoal = document.createTextNode(_goal);
+        get_yourgoal.appendChild(text_yourgoal);
+        
+        possession /= match_count;
+        possession = possession.toFixed(1).toString() + "%";
+        get_possession = document.getElementsByClassName('_possession')[0];
+        text_possession = document.createTextNode(possession);
+        get_possession.appendChild(text_possession);
+
+        foul /= match_count;
+        foul = foul.toFixed(1);
+        get_foul = document.getElementsByClassName('_foul')[0];
+        text_foul = document.createTextNode(foul);
+        get_foul.appendChild(text_foul);
+
+        
+        pass_rate = ((pass/pass_try) * 100).toFixed(1) + "% (" + pass + "/" + pass_try + "회)";
+        get_pass_rate = document.getElementsByClassName('_pass')[0];
+        text_pass = document.createTextNode(pass_rate);
+        get_pass_rate.appendChild(text_pass);
+
+        dribble /= match_count;
+        dribble = dribble.toFixed(1);
+        get_dribble = document.getElementsByClassName('_dribble')[0];
+        text_dribble = document.createTextNode(dribble);
+        get_dribble.appendChild(text_dribble);
+
+        shoot /= match_count;
+        shoot = shoot.toFixed(1);
+        get_shoot = document.getElementsByClassName('_shoot')[0];
+        text_shoot = document.createTextNode(shoot);
+        get_shoot.appendChild(text_shoot);
+        
+        effective_shoot /= match_count;
+        effective_shoot = effective_shoot.toFixed(1);
+        get_effective = document.getElementsByClassName('_effective')[0];
+        text_effective = document.createTextNode(effective_shoot);
+        get_effective.appendChild(text_effective);
+
+        shoot_success = ((effective_shoot/shoot) * 100).toFixed(1) + "% (" + effective_shoot + "/" + shoot + "회)";
+        get_success = document.getElementsByClassName('_shoot_success')[0];
+        text_success = document.createTextNode(shoot_success);
+        get_success.appendChild(text_success);
+        
+        corner /= match_count;
+        corner = corner.toFixed(1);
+        get_corner = document.getElementsByClassName('_corner')[0];
+        text_corner = document.createTextNode(corner);
+        get_corner.appendChild(text_corner);
+        
+        if(shoot_freekick == 0){
+            freekick_rate = 0;
+        } else{
+            freekick_rate = goal_freekick / shoot_freekick;
+        }
+        freekick_rate = (freekick_rate * 100).toFixed(1) + "% (" + goal_freekick + "/" + shoot_freekick + "회)";
+        get_freekick = document.getElementsByClassName('_freekick')[0];
+        text_freekick = document.createTextNode(freekick_rate);
+        get_freekick.appendChild(text_freekick);
+
+        if(shoot_penalty ==0){
+            penalty_rate = 0;
+        } else{
+            penalty_rate = goal_penalty / shoot_penalty;
+        }
+        penalty_rate = (penalty_rate * 100).toFixed(1) + "% (" + goal_penalty + "/" + shoot_penalty + "회)";
+        get_penalty = document.getElementsByClassName('_penalty')[0];
+        text_penalty = document.createTextNode(penalty_rate);
+        get_penalty.appendChild(text_penalty);
+
+        block_rate = ((block/block_try) * 100).toFixed(1) + "% (" + block + "/" + block_try + "회)";
+        get_block = document.getElementsByClassName('_block')[0];
+        text_block = document.createTextNode(block_rate);
+        get_block.appendChild(text_block);
+        
+        if(tackle_try ==0){
+            tackle_rate = 0;
+        } else{
+            tackle_rate = tackle / tackle_try;
+        }
+        tackle_rate = (tackle_rate * 100).toFixed(1) + "% (" + tackle + "/" + tackle_try + "회)";
+        get_tackle = document.getElementsByClassName('_tackle')[0];
+        text_tackle = document.createTextNode(tackle_rate);
+        get_tackle.appendChild(text_tackle);
+
+        num_total = #{num_total}; //개수
+        match_total = !{match_total}; //array
+
+        if(num_total < 20 || num_total == 20) var num_first = num_total;
+        else num_first = 20;
+
+        if(match_list[0].result == 'success'){
+            _param = match_list[0].matchinfo1.nickname.toUpperCase();
+        } else{
+            _param = match_list[0].nickname;
+        }
+
+        
+        //매치 기록 가져오기
+        for(var i=0; i<num_first; i++){
+            new_div = load_match(match_list[i]);
+            loc.appendChild(new_div);
+        }
+        
+
+        
+        if(20 < num_total){
+            get_more = document.getElementsByClassName('more_match_box')[0];
+            
+            a_more = document.createElement('a');
+            a_more.className = "_more_match";
+            a_more.href = "javascript:open();";
+            a_more.style.color = "white"; 
+            a_more.style.textDecoration = "none";
+            a_more.style.paddingTop = "6px";
+            a_more.style.paddingBottom = "6px"
+
+            text_more = document.createTextNode("더 보기");
+            a_more.appendChild(text_more);
+            
+            get_more.appendChild(a_more);
+        }   
+
+        function open(){
+            find_num = document.getElementsByClassName('match_list');
+            now_num = find_num.length;
+            if(num_total - now_num > 20) end = now_num + 20;
+            else{
+                end = num_total;
+                get_more.remove();
+            }
+            for(var i=now_num; i<end; i++){
+                console.log(i);
+                get_more_list(match_total[i], _param);
+            }
+        }
+
+        
+
+

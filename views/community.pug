@@ -1,0 +1,62 @@
+extends layout
+
+block scripts
+    link(rel="stylesheet", href="style_community.css")
+
+block content
+    .container
+        .top
+            a(href='#') GORANK.ME 커뮤니티
+        if post
+            .post-top
+                .post-title= post.title
+                .post-info
+                    .pl
+                        span.userid= post.user.nickname
+                        span.post-date= post.createdAt
+                    .pr
+                        .post-view= '조회 ' + post.views 
+            .post-middle
+                if post.img
+                    img.post-img(src=post.img alt='img')
+                .post-content= post.content
+            .post-bottom
+                .pl
+                .pr
+                    if user && post.user.id == user.id
+                        span.button1
+                            a(href="/community/modify/" + post.id + "?pasing=" + pasing.curPage) 수정
+                        span.button1
+                            a(href="/community/delete/" + post.id + "?pasing=" + pasing.curPage) 삭제
+                    span.upload
+                        a(href="/community/upload") 글쓰기
+        .list
+            .twits
+                .title
+                    .num 번호
+                    .content 제목
+                    .user 작성자
+                    .date 날짜
+                    .num2 조회
+                for twit in twits
+                    .twit
+                        .num= twit.id
+                        a.twit-title(href="/community/posts/" + pasing.curPage + "?post=" + twit.id)= twit.title
+                        .user= twit.user.nickname
+                        .date= twit.createdAt
+                        .num2= twit.views
+        .bottom_list
+            span.upload
+                a(href="/community/upload") 글쓰기
+        .numbering
+            if pasing.curSet>1
+                a.previous(href="/community/pasing/" + (pasing.startPage-1)) 이전페이지
+            - for(var x=pasing.startPage; x<=pasing.endPage; x++)
+                if x==pasing.curPage
+                    a.number_now(href="#")= x
+                else
+                    a.number(href="/community/pasing/" + x)= x
+            if pasing.curSet<pasing.totalSet
+                a.next(href="/community/pasing/" + (pasing.endPage+1)) 다음페이지
+    
+

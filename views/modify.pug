@@ -1,0 +1,41 @@
+extends layout
+
+block scripts
+    link(rel="stylesheet", href="style_upload.css")
+    script(src="./javascript/upload.js")
+
+block content
+    .container
+        .top
+            a(href='#') GORANK.ME 커뮤니티
+        form#upload(action='/post/modify', method='post' enctype="multipart/form-data")
+            .input-group
+                input#title(type="text" name="title" placeholder="제목을 입력해주세요.." required value=post.title)
+                textarea#content(name="content" placeholder="내용을 입력해주세요.." maxlength=1000 required)= post.content
+                #img-box
+                    input.upload-name(value="파일선택" disabled="disabled")
+                    label(for="img") 업로드
+                    input#img(type='file' accept='image/*')
+                    input#img-url(type='hidden' name='url')
+                input#pagenum(type='hidden' name='pagenum' value= pagenum)
+                input#postid(type='hidden' name='postid' value=post.id)
+                button.btn(type='submit') 등록
+    script.
+        if (document.getElementById('img')){
+            document.getElementById('img').addEventListener('change', function(e) {
+                var formData = new FormData();
+                console.log(this, this.files);
+                formData.append('img', this.files[0]);
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function() {
+                    if(xhr.status === 200) {
+                        var url = JSON.parse(xhr.responseText).url;
+                        document.getElementById('img-url').value = url;
+                    } else{
+                        console.error(xhr.responseText);
+                    }
+                }
+                xhr.open('POST' , '/post/img');
+                xhr.send(formData);
+            });
+        }

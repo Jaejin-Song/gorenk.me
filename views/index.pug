@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    main
+        .container-logo
+            img(src="img/gorank-main.png", alt="gorank.me")
+        .searchbar
+            .search-container
+                form#myForm(action='/result/', method='get', accept-charset="utf-8")
+                    input(type="text", placeholder="구단주명..", name="id")
+                    button(type="submit")
+                        i.fa.fa-search.fa-2x
+        .ad
+            ins(class="kakao_ad_area", style="display:none;", data-ad-unit="DAN-s4umcltzd35d", data-ad-width= "728", data-ad-height= "90")
+            ins(class="kakao_ad_area", style="display:none;", data-ad-unit="DAN-rh7sc41oplbr", data-ad-width= "728", data-ad-height= "90") 

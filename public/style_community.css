@@ -1,0 +1,210 @@
+body{
+    background-color: #333333;
+    min-width: 1080px;
+}
+
+.container{
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    color: white;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.container .top{
+    width: 1000px;
+    font-size: 30px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+
+.container .top a{
+    text-decoration: none;
+    color: white;
+}
+
+.container .post-top{
+    width: 100%;
+    border-top: 3px solid white;
+    border-bottom: 1px solid #9a9a9a;
+    padding: 8px 0;
+}
+
+.container .post-top .post-title{
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.container .post-top .post-info{
+    font-size: 13px;
+}
+
+.container .post-top .post-info .pl{
+    float: left;
+}
+
+.container .post-top .post-info .pl .post-date::before{
+    padding: 0 10px;
+    color: #9a9a9a;
+    content: "|";
+}
+
+.container .post-top .post-info .pr{
+    float: right;
+    margin-right: 10px;
+}
+
+.container .post-middle{
+    width: 100%;
+    border-bottom: 3px solid white;
+    padding-bottom: 20px;
+}
+
+.container .post-middle .post-img{
+    padding-top: 10px;
+    height: 400px;
+}
+
+.container .post-middle .post-content{
+    padding-top: 10px;
+    white-space: pre-line;
+}
+
+.container .post-bottom{
+    width: 1000px;
+    margin-bottom: 20px;
+}
+
+.container .post-bottom .pr{
+    float: right;
+    margin-top: 16px;
+}
+
+.container .post-bottom .button1{
+    background-color: black;
+    padding: 5px 27px;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.container .post-bottom .upload{
+    background-color: black;
+    padding: 5px 20px;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+.container .post-bottom a{
+    text-decoration: none;
+    color: white;
+}
+
+.container .list{
+    width: 1000px;
+    border-bottom: 1px solid white;
+}
+
+.container .list .twits{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container .list .twits .title{
+    width: 100%;
+    display: flex;
+    font-weight: bold;
+    padding: 10px 0;
+    border-top: 3px solid white;
+    border-bottom: 1px solid white;
+}
+
+.container .list .twits .num{
+    width: 100px;
+    text-align: center;
+}
+
+.container .list .twits .content{
+    width: 450px;
+    text-align: center;
+}
+
+.container .list .twits .user{
+    width: 150px;
+    text-align: center;
+}
+
+.container .list .twits .date{
+    width: 200px;
+    text-align: center;
+}
+
+.container .list .twits .num2{
+    width: 100px;
+    text-align: center;
+}
+
+.container .list .twits .twit{
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #444444;
+    padding: 5px 0;
+}
+
+.container .list .twits .twit .twit-title{
+    width: 450px;
+    padding-left: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+.container .bottom_list{
+    width: 1000px;
+}
+
+.container .bottom_list .upload{
+    background-color: black;
+    padding: 5px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    float: right;
+}
+
+.container .bottom_list .upload a{
+    text-decoration: none;
+    color: white;
+}
+
+.container .numbering{
+    width: 1000px;
+    text-align: center;
+}
+
+.container .numbering .previous{
+    text-decoration: none;
+    color: white;
+    padding-right: 5px;
+}
+
+.container .numbering .number_now{
+    text-decoration: none;
+    color: white;
+    padding: 0 5px;
+    font-weight: bold;
+    color: #c965e8;
+    text-decoration: underline;
+}
+
+.container .numbering .number{
+    text-decoration: none;
+    color: white;
+    padding: 0 5px;
+}
+
+.container .numbering .next{
+    padding-left: 5px;
+    text-decoration: none;
+    color: white;
+}

@@ -1,0 +1,34 @@
+.about_box{
+    width: 1080px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.about_box .title{
+    width: 950px;
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #444444;
+}
+
+.about_box .title span{
+    font-size: 25px;
+}
+
+.about_box .img img{
+    height: 120px;
+}
+
+.about_box .con{
+    text-align: center;
+}
+
+.about_box .con .num{
+    width: 100%;
+    border: 1px solid black;
+}
