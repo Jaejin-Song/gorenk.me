@@ -9,7 +9,7 @@ require('dotenv').config();
 const logger = require('./routes/logger');
 const helmet = require('helmet');
 const hpp = require('hpp');
-const RedisStore = require('connect-redis')(session);
+// const RedisStore = require('connect-redis')(session);
 const { sequelize } = require('./models');
 const passportConfig = require('./passport');
 // const greenlock = require('greenlock-cluster');
@@ -25,22 +25,22 @@ const postRouter = require('./routes/post');
 
 const app = express();
 sequelize.sync();
-passportConfig(passport);
+// passportConfig(passport);
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8080);
 
-const options = {
-    key: fs.readFileSync(path.resolve(process.cwd(), '/etc/letsencrypt/live/gorank.me/privkey.pem'), 'utf8').toString(),
-    cert: fs.readFileSync(path.resolve(process.cwd(), '/etc/letsencrypt/live/gorank.me/cert.pem'), 'utf8').toString(),
-};
+// const options = {
+//     key: fs.readFileSync(path.resolve(process.cwd(), '/etc/letsencrypt/live/gorank.me/privkey.pem'), 'utf8').toString(),
+//     cert: fs.readFileSync(path.resolve(process.cwd(), '/etc/letsencrypt/live/gorank.me/cert.pem'), 'utf8').toString(),
+// };
 
 // Create an HTTP service.
-http.createServer(app).listen(80);
+// http.createServer(app).listen(80);
 // Create an HTTPS service identical to the HTTP service.
-https.createServer(options, app).listen(443);
+// https.createServer(options, app).listen(443);
 
 
 app.use(morgan('dev'));
@@ -78,12 +78,12 @@ const sessionOption = {
         httpOnly: true,
         secure: false,
     },
-    store: new RedisStore({ 
-        host: process.env.REDIS_HOST,
-        port: process.env.REDIS_PORT,
-        pass: process.env.REDIS_PASSWORD,
-        logErrors: true,
-     }),
+    // store: new RedisStore({ 
+    //     host: process.env.REDIS_HOST,
+    //     port: process.env.REDIS_PORT,
+    //     pass: process.env.REDIS_PASSWORD,
+    //     logErrors: true,
+    //  }),
 };
 if (process.env.NODE_ENV === 'production'){
     sessionOption.proxy = true;

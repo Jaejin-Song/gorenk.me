@@ -4,7 +4,7 @@
   "description": "피파온라인4 닉네임으로 최근 전적, 구단 정보 조회 서비스",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production PORT=80 pm2 start app.js -i 0",
+    "start": "cross-env NODE_ENV=production PORT=80 pm2 start app.js",
     "dev": "nodemon app"
   },
   "author": "luka25",
